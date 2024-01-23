@@ -14,7 +14,7 @@ function Aside() {
               <ul className="space-y-1">
                 <li>
                   <a
-                    href="#"
+                    href="/pantry"
                     className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
                   >
                     <svg
@@ -32,7 +32,7 @@ function Aside() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/recipes"
                     className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
                   >
                     <svg
