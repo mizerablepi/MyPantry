@@ -1,4 +1,24 @@
+import { useState, useEffect, useRef, createElement } from "react";
+import { fetchItemName } from "@/utility";
+
 function ItemForm() {
+  const [item, setItem] = useState("");
+  const [datalist, setDatalist] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    const assignData = async () => {
+      const data = await fetchItemName(item, signal);
+      setDatalist(data);
+    };
+    assignData();
+
+    return () => {
+      controller.abort();
+    };
+  }, [item]);
+
   return (
     <div className="px-6 py-8">
       <div className="max-w-4xl mx-auto">
@@ -12,11 +32,21 @@ function ItemForm() {
               Item Name:
             </label>
             <input
-              type="text"
               id="name"
               name="name"
+              list="items"
               className="mb-2 border border-gray-400 rounded-lg"
+              value={item}
+              onChange={(e) => setItem(e.target.value)}
+              autoComplete="false"
             />
+
+            <datalist id="items">
+              {datalist.map((item) => (
+                <option value={item.name}>{item.name}</option>
+              ))}
+            </datalist>
+
             <label htmlFor="amount" className="font-bold">
               Qty:
             </label>
