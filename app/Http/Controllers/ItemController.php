@@ -12,7 +12,7 @@ class ItemController extends Controller
 {
     public function index(){
         $users = User::get()[0]; 
-        return Inertia::render('Pantry',['items'=>$users->items()]);
+        return Inertia::render('Pantry',['items'=>$users->items()->get()]);
     }
 
     public function create(){
