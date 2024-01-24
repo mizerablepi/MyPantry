@@ -21,8 +21,8 @@ function Items({ items }) {
             <hr className="my-6" />
 
             <div className="grid grid-cols-4 ">
-              {items.map((item) => (
-                <Card item={item} />
+              {items.map((item, index) => (
+                <Card item={item} key={index} />
               ))}
             </div>
           </div>
