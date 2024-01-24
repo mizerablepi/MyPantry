@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('item_user', function (Blueprint $table) {
             $table->foreignId('item_id');
             $table->foreignId('user_id');
+            $table->integer('amount');
             $table->primary(['item_id', 'user_id']);
         });
     }
