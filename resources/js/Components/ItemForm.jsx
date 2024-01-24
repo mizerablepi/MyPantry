@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchItemName } from "@/utility";
 
-function ItemForm() {
+function ItemForm({ token }) {
   const [item, setItem] = useState("");
   const [datalist, setDatalist] = useState([]);
   const [itemValid, setItemValid] = useState(true);
@@ -22,10 +22,8 @@ function ItemForm() {
     const input = e.target.value;
     const valid = datalist.some((item) => input === item.name);
     if (!valid && input != "") {
-      console.error("ERRRRR");
       setItemValid(false);
     } else {
-      console.log("VALID");
       setItemValid(true);
     }
   };
@@ -39,6 +37,8 @@ function ItemForm() {
             method="post"
             className="flex flex-col items-start"
           >
+            <input type="hidden" name="_token" value={token} />
+
             <label htmlFor="name" className="font-bold">
               Item Name:
             </label>
