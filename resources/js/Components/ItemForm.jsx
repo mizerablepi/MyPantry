@@ -1,23 +1,34 @@
-import { useState, useEffect, useRef, createElement } from "react";
+import { useState, useEffect } from "react";
 import { fetchItemName } from "@/utility";
 
 function ItemForm() {
   const [item, setItem] = useState("");
   const [datalist, setDatalist] = useState([]);
+  const [itemValid, setItemValid] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
-    const assignData = async () => {
-      const data = await fetchItemName(item, signal);
-      setDatalist(data);
-    };
-    assignData();
+    fetchItemName(item, signal)
+      .then((res) => setDatalist(res))
+      .catch((err) => {});
 
     return () => {
       controller.abort();
     };
   }, [item]);
+
+  const itemValidation = (e) => {
+    const input = e.target.value;
+    const valid = datalist.some((item) => input === item.name);
+    if (!valid && input != "") {
+      console.error("ERRRRR");
+      setItemValid(false);
+    } else {
+      console.log("VALID");
+      setItemValid(true);
+    }
+  };
 
   return (
     <div className="px-6 py-8">
@@ -38,12 +49,18 @@ function ItemForm() {
               className="mb-2 border border-gray-400 rounded-lg"
               value={item}
               onChange={(e) => setItem(e.target.value)}
-              autoComplete="false"
+              autoComplete="off"
+              onBlur={itemValidation}
             />
+            <div className={`text-red-600 ${itemValid ? "hidden" : "block"}`}>
+              Please select a value from the list only
+            </div>
 
             <datalist id="items">
               {datalist.map((item) => (
-                <option value={item.name}>{item.name}</option>
+                <option key={item.name} value={item.name}>
+                  {item.name}
+                </option>
               ))}
             </datalist>
 
