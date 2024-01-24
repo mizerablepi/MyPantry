@@ -6,7 +6,7 @@ function Card({ item }) {
           {item.name}
         </span>
         <div className="text-sm text-gray-600 flex justify-between">
-          <span>Qty: 1</span>
+          <span>Qty: {item.pivot.amount}</span>
           <a
             href="#"
             className="text-red-500 cursor-pointer hover:text-red-600 hover:underline"
