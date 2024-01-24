@@ -2,18 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
+use Illuminate\Support\Facades\Http;
+ 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/autocomplete', function(Request $request){
+    
+    $response = Http::get(env('API_ITEM_AUTOCOMPLETE_URL').'?apiKey='.env('API_KEY').'&query='.$request->string.'&number=5');
+    return $response->body();
 });
