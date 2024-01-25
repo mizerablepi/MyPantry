@@ -1,11 +1,10 @@
-import Aside from "@/Components/Aside";
 import Items from "@/Components/Items";
 import MainLayout from "@/Layouts/MainLayout";
 
-function Pantry({ items }) {
+function Pantry({ items, token }) {
   return (
     <>
-      <MainLayout inner={<Items items={items} />} />
+      <MainLayout inner={<Items items={items} />} token={token} />
     </>
   );
 }
