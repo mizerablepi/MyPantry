@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::middleware('auth')->get('/', function () {
 });
 
 Route::middleware('auth')->resource('/pantry',ItemController::class);
+Route::middleware('auth')->resource('/recipes',RecipeController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
