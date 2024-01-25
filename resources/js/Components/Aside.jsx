@@ -64,9 +64,6 @@ function Aside({ token }) {
                 <span className="font-bold text-sm">Logout</span>
               </button>
             </form>
-            {/* <Dropdown.Link href={route("logout")} method="post" as="button">
-              Logout
-            </Dropdown.Link> */}
           </div>
         </div>
       </aside>
