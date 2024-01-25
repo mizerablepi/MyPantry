@@ -1,4 +1,6 @@
-function Aside() {
+import Dropdown from "./Dropdown";
+
+function Aside({ token }) {
   return (
     <>
       <aside className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60 hidden md:block">
@@ -52,12 +54,19 @@ function Aside() {
             </div>
           </div>
           <div className="p-4">
-            <button
-              type="button"
-              className="h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm transition"
-            >
-              <span className="font-bold text-sm">Logout</span>
-            </button>
+            <form action="/logout" method="post">
+              <input type="hidden" name="_token" value={token} />
+              <button
+                type="submit"
+                href="/logout"
+                className="h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm transition"
+              >
+                <span className="font-bold text-sm">Logout</span>
+              </button>
+            </form>
+            {/* <Dropdown.Link href={route("logout")} method="post" as="button">
+              Logout
+            </Dropdown.Link> */}
           </div>
         </div>
       </aside>
