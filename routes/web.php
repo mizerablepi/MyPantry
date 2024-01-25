@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -17,11 +18,11 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', function () {
+Route::middleware('auth')->get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::resource('/pantry',ItemController::class);
+Route::middleware('auth')->resource('/pantry',ItemController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
