@@ -1,10 +1,10 @@
 import ItemForm from "@/Components/ItemForm";
 import MainLayout from "@/Layouts/MainLayout";
 
-function CreateItem({ token }) {
+function CreateItem({ token, errors }) {
   return (
     <>
-      <MainLayout inner={<ItemForm token={token} />} />
+      <MainLayout inner={<ItemForm token={token} errors={errors} />} />
     </>
   );
 }

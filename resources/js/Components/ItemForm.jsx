@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { fetchItemName } from "@/utility";
 
-function ItemForm({ token }) {
+function ItemForm({ token, errors }) {
   const [item, setItem] = useState("");
   const [datalist, setDatalist] = useState([]);
-  const [itemValid, setItemValid] = useState(true);
+  const [itemValid, setItemValid] = useState(false);
+
+  console.log(itemValid);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -48,9 +50,11 @@ function ItemForm({ token }) {
               list="items"
               className="mb-2 border border-gray-400 rounded-lg"
               value={item}
-              onChange={(e) => setItem(e.target.value)}
+              onChange={(e) => {
+                setItem(e.target.value);
+                itemValidation(e);
+              }}
               autoComplete="off"
-              onBlur={itemValidation}
             />
             <div className={`text-red-600 ${itemValid ? "hidden" : "block"}`}>
               Please select a value from the list only
@@ -73,8 +77,14 @@ function ItemForm({ token }) {
               name="amount"
               className="mb-2 border border-gray-400 rounded-lg"
             />
+            {Object.keys(errors).length !== 0
+              ? errors.map((err) => (
+                  <div className="text-sm text-red-500 mb-2">{err}</div>
+                ))
+              : ""}
             <button
               type="submit"
+              disabled={!itemValid}
               className="h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm transition font-bold"
             >
               Add +

@@ -4,7 +4,7 @@ import MainLayout from "@/Layouts/MainLayout";
 function Pantry({ items, token }) {
   return (
     <>
-      <MainLayout inner={<Items items={items} />} token={token} />
+      <MainLayout inner={<Items items={items} token={token} />} token={token} />
     </>
   );
 }

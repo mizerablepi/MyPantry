@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function Items({ items }) {
+function Items({ items, token }) {
   return (
     <>
       <div className="px-6 py-8">
@@ -20,9 +20,9 @@ function Items({ items }) {
 
             <hr className="my-6" />
 
-            <div className="grid grid-cols-4 ">
+            <div className="grid grid-cols-4 gap-4">
               {items.map((item, index) => (
-                <Card item={item} key={index} />
+                <Card item={item} key={index} token={token} />
               ))}
             </div>
           </div>
