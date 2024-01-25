@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class ItemController extends Controller
 {
-    public function index(){
-        $users = User::get()[0]; 
+    public function index(Request $req){
+        $users = $req->user(); 
         return Inertia::render('Pantry',['items'=>$users->items()->get()]);
     }
 
@@ -20,7 +20,11 @@ class ItemController extends Controller
     }
 
     public function store(Request $req){
-        // dd($req->name);
+
+        $user = $req->user();
+        $item = new Item(['name'=>$req->name]);
+        
+        
         
         return Redirect::to('/pantry');
     }
