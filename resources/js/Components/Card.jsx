@@ -10,11 +10,9 @@ function Card({ item, token }) {
 
   return (
     <>
-      <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
+      <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2 min-w-40">
         <div className="flex justify-start gap-2">
-          <span className="font-bold hover:text-yellow-800 hover:underline">
-            {item.name}
-          </span>
+          <span className="font-bold">{item.name}</span>
           <a
             href={`/pantry/${item.id}/edit`}
             className="text-xs align-bottom text-blue-400 hover:text-blue-500 hover:underline pt-1"

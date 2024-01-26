@@ -20,7 +20,7 @@ function Items({ items, token }) {
 
             <hr className="my-6" />
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-4">
               {items.map((item, index) => (
                 <Card item={item} key={index} token={token} />
               ))}
