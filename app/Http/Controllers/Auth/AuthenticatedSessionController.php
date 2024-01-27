@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return Inertia::render('/');
+        return Inertia::render('Welcome');
     }
 
     /**
