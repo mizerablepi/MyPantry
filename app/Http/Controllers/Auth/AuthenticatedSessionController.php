@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect($to=RouteServiceProvider::HOME ,$secure=true, $status=302);
+        return Inertia::render('/');
     }
 
     /**
