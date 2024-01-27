@@ -1,0 +1,1 @@
+import{j as e}from"./app-MVtt9A-D.js";import{M as r}from"./MainLayout-Nb4JFWDD.js";import"./Dropdown-JVoAgnJ8.js";import"./transition-L3X6P44s.js";function i({auth:o,token:t}){return e.jsx(r,{inner:e.jsxs("h1",{className:"text-2xl p-2 m-2 font-bold",children:["Welcome,",o.user.name]}),token:t})}export{i as default};
